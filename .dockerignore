@@ -1,0 +1,20 @@
+# Ignore IDE config files (e.g., PyCharm/IntelliJ)
+.idea/
+*.iml
+
+# Ignore Python bytecode
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environment folders
+.venv/
+env/
+venv/
+
+# Ignore the .env file for sensitive data
+.env
+
+# Ignore the Dockerfile and docker-compose.yml files in dockerfiles/ if already included in the root directory
+dockerfiles/

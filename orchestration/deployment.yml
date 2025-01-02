@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fastapi-app
+  template:
+    metadata:
+      labels:
+        app: fastapi-app
+    spec:
+      containers:
+        - name: fastapi-app-container
+          image: fastapi-docker-kubernetes-app  # Correct image name
+          imagePullPolicy: Never  # Prevents pulling the image from a registry
+          ports:
+            - containerPort: 8000  # FastAPI default port
+          envFrom:
+            - secretRef:
+                name: app-secrets  # Reference to the secret for environment variables
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
